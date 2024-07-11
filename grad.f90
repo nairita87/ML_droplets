@@ -66,7 +66,7 @@ implicit none
         !call rfftwnd_f77_one_real_to_complex(pfor,phi,0)
         !phi=phi*scale
 
-	do t=1,100
+	do t=1,1000
 	call rfftwnd_f77_one_real_to_complex(pfor,phi,0)
 	phi=phi*scale
 	open(unit=14,file='output1',status='unknown')
@@ -110,8 +110,8 @@ implicit none
         do i=1,n
                 phi(i)=phi(i)-phi(i)*gradphi(i)*dt+nu*gradsqrphi(i)*dt
         enddo
-        print*,mod(t,10)
-        if(mod(t,10).eq.0)then
+        print*,mod(t,100)
+        if(mod(t,100).eq.0)then
         write(fname,'(i4)')(t)
         open(unit=141, file='output_dir/file'//trim(adjustl(fname))//'.dat', status='unknown')
         do i=1,n
